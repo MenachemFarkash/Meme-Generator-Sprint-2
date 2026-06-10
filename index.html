@@ -3,8 +3,15 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script src="js/controllers/main.controller.js"></script>
-        <script src="js/services/main.service.js"></script>
+        <!-- services -->
+        <script src="js/services/gallery.service.js" defer></script>
+        <script src="js/services/main.service.js" defer></script>
+
+        <!-- controllers -->
+        <script src="js/controllers/main.controller.js" defer></script>
+        <script src="js/controllers/gallery.controller.js" defer></script>
+
+        <!-- CSS -->
         <link rel="stylesheet" href="css/main.css" />
         <link rel="stylesheet" href="css/gallery.css" />
         <link rel="stylesheet" href="css/meme-editor.css" />
@@ -12,20 +19,19 @@
         <!-- Font Awesome Link -->
         <script src="fontawesome-free-7.2.0-web/js/solid.js" defer></script>
         <script src="fontawesome-free-7.2.0-web/js/fontawesome.js" defer></script>
-        <link rel="stylesheet" href="fontawesome-free-7.2.0-web/css/brands.css" />
 
-        <title>Document</title>
+        <title>Meme Generator</title>
     </head>
     <body>
         <nav>
             <h1>MEME GEN</h1>
             <div class="nav-links">
-                <p>Gallery</p>
+                <p onclick="onChangePage('gallery-page')">Gallery</p>
                 <p>About</p>
             </div>
         </nav>
         <main>
-            <!-- <div class="gallery-page">
+            <div class="gallery-page">
                 <div class="gallery-nav">
                     <label for="search-input">Search</label>
                     <input type="text" id="search-input" placeholder="Hmmm..." />
@@ -39,27 +45,34 @@
                     </div>
                 </div>
                 <div class="images-container">
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?1" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?2" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?3" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?4" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?5" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?6" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?7" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?8" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?9" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?10" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?11" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?12" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?13" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?14" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?15" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?16" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?17" alt="" /></div>
-                    <div class="gallery-item"><img src="http://unsplash.it/300/300?18" alt="" /></div>
+                    <div class="gallery-item"><img src="images/1.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/2.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/3.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/4.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/5.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/6.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/7.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/8.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/9.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/10.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/11.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/12.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/13.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/14.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/15.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/16.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/17.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/18.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/19.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/20.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/21.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/22.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/23.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/24.jpg" alt="" /></div>
+                    <div class="gallery-item"><img src="images/25.jpg" alt="" /></div>
                 </div>
-            </div> -->
-            <div class="meme-editor-page">
+            </div>
+            <div class="meme-editor-page hidden">
                 <div class="meme-editor-container">
                     <section class="meme-preview">
                         <canvas width="500px" height="500px"></canvas>
@@ -91,7 +104,7 @@
                             </button>
                             <label for="text-font-select">Select Font</label>
                             <select name="text-font-select" id="">
-                                <option value="Impact">Arial</option>
+                                <option value="Arial">Arial</option>
                                 <option value="Impact">Impact</option>
                                 <option value="Monospace">Monospace</option>
                             </select>

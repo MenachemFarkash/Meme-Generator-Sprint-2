@@ -35,3 +35,7 @@ nav p {
 .nav-links > p:hover {
     cursor: pointer;
 }
+
+.hidden {
+    display: none;
+}
