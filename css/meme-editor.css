@@ -1,0 +1,41 @@
+.meme-editor-page {
+    margin: 3rem;
+    background-color: rgb(103, 103, 103);
+    padding: 1rem;
+}
+
+.meme-editor-container {
+    display: flex;
+}
+
+.meme-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-inline: 1rem;
+}
+
+.meme-controls input {
+    width: 100%;
+    margin-block-end: 1rem;
+    height: 2rem;
+}
+
+.meme-controls .add-text-button {
+    width: 100%;
+    height: 2rem;
+    font-size: 1.5rem;
+    border: unset;
+    background-color: white;
+    cursor: pointer;
+}
+
+.text-properties-editor button {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+}
+
+canvas {
+    background-color: white;
+}

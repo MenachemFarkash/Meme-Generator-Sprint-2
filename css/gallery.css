@@ -1,0 +1,28 @@
+.gallery-page {
+    margin: 3rem;
+    background-color: whitesmoke;
+    padding: 1rem;
+}
+
+.gallery-nav {
+    display: flex;
+    padding: 1rem;
+    margin: 1rem;
+    gap: 0.5rem;
+}
+
+.images-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    margin: 0 auto;
+    transition: 300ms;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}

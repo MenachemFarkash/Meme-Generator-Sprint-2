@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="js/controllers/main.controller.js"></script>
+        <script src="js/services/main.service.js"></script>
+        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/gallery.css" />
+        <link rel="stylesheet" href="css/meme-editor.css" />
+
+        <!-- Font Awesome Link -->
+        <script src="fontawesome-free-7.2.0-web/js/solid.js" defer></script>
+        <script src="fontawesome-free-7.2.0-web/js/fontawesome.js" defer></script>
+        <link rel="stylesheet" href="fontawesome-free-7.2.0-web/css/brands.css" />
+
+        <title>Document</title>
+    </head>
+    <body>
+        <nav>
+            <h1>MEME GEN</h1>
+            <div class="nav-links">
+                <p>Gallery</p>
+                <p>About</p>
+            </div>
+        </nav>
+        <main>
+            <!-- <div class="gallery-page">
+                <div class="gallery-nav">
+                    <label for="search-input">Search</label>
+                    <input type="text" id="search-input" placeholder="Hmmm..." />
+                    <div class="keywords-container">
+                        <span>Funny</span>
+                        <span>Cat</span>
+                        <span>President</span>
+                        <span>Bibi</span>
+                        <span>Horse</span>
+                        <span>Joke</span>
+                    </div>
+                </div>
+                <div class="images-container">
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?1" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?2" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?3" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?4" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?5" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?6" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?7" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?8" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?9" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?10" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?11" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?12" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?13" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?14" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?15" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?16" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?17" alt="" /></div>
+                    <div class="gallery-item"><img src="http://unsplash.it/300/300?18" alt="" /></div>
+                </div>
+            </div> -->
+            <div class="meme-editor-page">
+                <div class="meme-editor-container">
+                    <section class="meme-preview">
+                        <canvas width="500px" height="500px"></canvas>
+                    </section>
+                    <section class="meme-controls">
+                        <div class="text-inputs">
+                            <input type="text" /><input type="text" /><input type="text" />
+                            <button class="add-text-button">Add More Text...</button>
+                        </div>
+
+                        <div class="text-properties-editor">
+                            <button class="increase-font-size-button">
+                                <i class="fa-solid fa-a"></i>
+                            </button>
+                            <button class="decrease-font-size-button">
+                                <i class="fa-solid fa-a"></i>
+                            </button>
+                            <button class="align-text-left-button">
+                                <i class="fa-solid fa-align-left"></i>
+                            </button>
+                            <button class="align-text-center-button">
+                                <i class="fa-solid fa-align-center"></i>
+                            </button>
+                            <button class="align-text-right-button">
+                                <i class="fa-solid fa-align-right"></i>
+                            </button>
+                            <button class="justify-text-left-button">
+                                <i class="fa-solid fa-up-down"></i>
+                            </button>
+                            <label for="text-font-select">Select Font</label>
+                            <select name="text-font-select" id="">
+                                <option value="Impact">Arial</option>
+                                <option value="Impact">Impact</option>
+                                <option value="Monospace">Monospace</option>
+                            </select>
+                        </div>
+
+                        <div class="stikers"></div>
+                    </section>
+                </div>
+            </div>
+            <div class="about-page"></div>
+        </main>
+        <footer></footer>
+    </body>
+</html>

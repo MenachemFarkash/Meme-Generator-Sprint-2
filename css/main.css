@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 1rem;
+    background-color: rgb(57, 57, 57);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-inline: 2rem;
+    height: 4rem;
+    background-color: lightblue;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    font-size: 2rem;
+    margin-inline-end: 1rem;
+}
+
+nav h1,
+nav p {
+    margin: 0;
+    height: max-content;
+}
+
+.nav-links > p:hover {
+    cursor: pointer;
+}
