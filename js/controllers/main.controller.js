@@ -13,3 +13,8 @@ function onChangePage(page) {
     newPage.classList.remove('hidden')
     currentOpenPage = newPage.classList[0]
 }
+
+function onCanvasClick(ev) {
+    console.log(ev.layerX, ev.layerY)
+    checkIfTextClicked(ev.layerX, ev.layerY)
+}

@@ -9,6 +9,10 @@ function renderSelectedMemeToCanvas(img) {
         canvas.width = image.naturalWidth
         canvas.height = image.naturalHeight
         ctx.drawImage(image, 0, 0)
+
+        gEditor.img = img
+
+        setupInitialText()
     }
 
     image.src = img

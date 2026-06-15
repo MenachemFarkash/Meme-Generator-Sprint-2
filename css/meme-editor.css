@@ -39,3 +39,14 @@
 canvas {
     background-color: white;
 }
+
+.meme-preview {
+    position: relative;
+}
+
+.test-text {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: white;
+}

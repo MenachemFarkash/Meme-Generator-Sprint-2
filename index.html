@@ -6,10 +6,12 @@
         <!-- services -->
         <script src="js/services/gallery.service.js" defer></script>
         <script src="js/services/main.service.js" defer></script>
+        <script src="js/services/editor.service.js" defer></script>
 
         <!-- controllers -->
         <script src="js/controllers/main.controller.js" defer></script>
         <script src="js/controllers/gallery.controller.js" defer></script>
+        <script src="js/controllers/editor.controller.js" defer></script>
 
         <!-- CSS -->
         <link rel="stylesheet" href="css/main.css" />
@@ -75,11 +77,12 @@
             <div class="meme-editor-page hidden">
                 <div class="meme-editor-container">
                     <section class="meme-preview">
-                        <canvas width="500px" height="500px"></canvas>
+                        <canvas width="500px" height="500px" onclick="onCanvasClick(event)"> </canvas>
+                        <h1 class="test-text">Hi</h1>
                     </section>
                     <section class="meme-controls">
                         <div class="text-inputs">
-                            <input type="text" /><input type="text" /><input type="text" />
+                            <input type="text" class="text-input" />
                             <button class="add-text-button">Add More Text...</button>
                         </div>
 
