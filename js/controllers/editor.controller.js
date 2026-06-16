@@ -41,6 +41,9 @@ function setupEditorListeners() {
 
     const fontPicker = document.querySelector('.text-font-select')
     fontPicker.addEventListener('change', () => changeTextFont(fontPicker.value))
+
+    const downloadButton = document.querySelector('.download-button a')
+    downloadButton.addEventListener('click', () => onDownloadImage(downloadButton, gCanvas, Event))
 }
 
 function renderText() {
@@ -149,4 +152,8 @@ function onChangeTextColor(newColor) {
 
 function onChangeTextFont(newFont) {
     changeTextFont(newFont)
+}
+
+function onDownloadImage(button, canvas, ev) {
+    button.href = canvas.toDataURL()
 }
