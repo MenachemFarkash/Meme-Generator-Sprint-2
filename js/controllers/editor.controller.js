@@ -52,7 +52,9 @@ function renderText() {
     lines.forEach((line) => {
         gCtx.font = `${line.properties.bold ? 'bold' : ''} ${line.properties.fontSize}px ${line.properties.font}`
         gCtx.fillStyle = line.properties.color
+        gCtx.lineWidth = 5
         gCtx.textAlign = line.properties.align
+        gCtx.strokeText(line.text, line.textPos[0], line.textPos[1])
         gCtx.fillText(line.text, line.textPos[0], line.textPos[1])
     })
 }

@@ -14,9 +14,9 @@
         <script src="js/controllers/editor.controller.js" defer></script>
 
         <!-- CSS -->
-        <link rel="stylesheet" href="css/main.css" />
         <link rel="stylesheet" href="css/gallery.css" />
         <link rel="stylesheet" href="css/meme-editor.css" />
+        <link rel="stylesheet" href="css/main.css" />
 
         <!-- Font Awesome Link -->
         <script src="fontawesome-free-7.2.0-web/js/solid.js" defer></script>
@@ -35,8 +35,27 @@
         <main>
             <div class="gallery-page">
                 <div class="gallery-nav">
-                    <label for="search-input">Search</label>
-                    <input type="text" id="search-input" placeholder="Hmmm..." />
+                    <div class="search-input-container">
+                        <input type="text" class="search-input" placeholder="Search" />
+                        <label for="search-input" class="search-icon"
+                            ><svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="36px"
+                                viewBox="0 -960 960 960"
+                                width="36px"
+                            >
+                                <defs>
+                                    <linearGradient id="searchGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#0f9bb4" />
+                                        <stop offset="100%" stop-color="#2fbb72" />
+                                    </linearGradient>
+                                </defs>
+                                <path
+                                    fill="url(#searchGradient)"
+                                    d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"
+                                /></svg
+                        ></label>
+                    </div>
                     <div class="keywords-container">
                         <span>Funny</span>
                         <span>Cat</span>
@@ -45,6 +64,7 @@
                         <span>Horse</span>
                         <span>Joke</span>
                     </div>
+                    <button class="more-keywords-button">More</button>
                 </div>
                 <div class="images-container">
                     <div class="gallery-item"><img src="images/1.jpg" alt="" /></div>
@@ -80,9 +100,12 @@
                         <canvas width="500px" height="500px"> </canvas>
                     </section>
                     <section class="meme-controls">
-                        <div class="text-inputs">
-                            <input type="text" class="text-input" autocomplete="off" />
-                            <button class="add-text-button">Add More Text...</button>
+                        <input type="text" class="text-input" autocomplete="off" />
+
+                        <div class="action-buttons-container">
+                            <button class="add-text-button"><i class="fa-solid fa-plus"></i></button>
+                            <button class="remove-text-button"><i class="fa-solid fa-trash"></i></button>
+                            <button class="switch-text-button"><i class="fa-solid fa-up-down"></i></button>
                         </div>
 
                         <div class="text-properties-editor">
@@ -101,22 +124,17 @@
                             <button class="align-text-right-button">
                                 <i class="fa-solid fa-align-right"></i>
                             </button>
-                            <button class="justify-text-left-button">
-                                <i class="fa-solid fa-up-down"></i>
-                            </button>
-                            <label for="text-font-select">Select Font</label>
+
                             <select name="text-font-select" class="text-font-select">
-                                <option value="Arial">Arial</option>
-                                <option value="Impact">Impact</option>
-                                <option value="Monospace">Monospace</option>
+                                <option value="Arial" style="font-family: Arial">Arial</option>
+                                <option value="Impact" style="font-family: impact">Impact</option>
+                                <option value="Monospace" style="font-family: monospace">Monospace</option>
                             </select>
                             <input type="color" name="text-color" class="text-color-picker" />
                         </div>
+                        <button class="download-button"><a href="#" download="Your-meme">DOWNLOAD</a></button>
 
                         <div class="stikers"></div>
-                    </section>
-                    <section>
-                        <button class="download-button"><a href="#" download="Your-meme">DOWNLOAD</a></button>
                     </section>
                 </div>
             </div>
