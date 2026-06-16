@@ -1,19 +1,21 @@
-const gEditor = {
+let gEditor = {
     lines: [
         {
             lineNumber: 1,
-            text: 'Just some text',
-            textPos: [50, 50],
+            text: 'Enter some text',
+            textPos: [350, 100],
             properties: {
                 baseline: 'alphabetic',
                 font: 'Arial',
                 fontSize: 40,
                 bold: false,
                 align: 'center',
+                color: 'white',
             },
         },
     ],
     img: 'images/1.jpg',
+    selectedLine: 1,
 }
 
 function checkIfTextClicked(x, y, ctx) {
@@ -68,4 +70,97 @@ function getTextBoundingBox(ctx, line) {
     }
 
     return pos
+}
+
+function changeSelectedLine(newLine) {
+    gEditor.selectedLine = newLine
+}
+
+function getSelectedLine() {
+    return gEditor.lines[gEditor.selectedLine - 1]
+}
+
+function changeTextPos(newPos) {
+    const { lines, selectedLine } = gEditor
+    const linePos = lines[selectedLine - 1].textPos
+
+    let newX = linePos[0] + newPos[0]
+    let newY = linePos[1] + newPos[1]
+
+    if (newPos[0] <= linePos[0]) newX = linePos[0] - newPos[0]
+    if (newPos[1] <= linePos[1]) newY = linePos[1] - newPos[1]
+
+    if (newPos[0] > linePos[0]) newX = linePos[0] + newPos[0]
+    if (newPos[1] > linePos[1]) newY = linePos[1] + newPos[1]
+
+    linePos[0] = newX
+    linePos[1] = newY
+}
+
+function addNewTextLine() {
+    const newLine = {
+        lineNumber: gEditor.lines.length + 1,
+        text: 'Enter Text',
+        textPos: [350, (gEditor.lines.length + 1) * 50],
+        properties: {
+            baseline: 'alphabetic',
+            font: 'Arial',
+            fontSize: 40,
+            bold: false,
+            align: 'center',
+        },
+    }
+
+    gEditor.lines.push(newLine)
+    gEditor.selectedLine = gEditor.lines.length
+    renderText()
+}
+
+function changeTextAlignment(newAlignment) {
+    const { lines, selectedLine } = gEditor
+    lines[selectedLine - 1].properties.align = newAlignment
+    renderCanvas()
+}
+
+function changeTextFontSize(shouldIncrease) {
+    const { lines, selectedLine } = gEditor
+    if (shouldIncrease) lines[selectedLine - 1].properties.fontSize += 2
+    else lines[selectedLine - 1].properties.fontSize -= 2
+    renderCanvas()
+}
+
+function changeTextColor(newColor) {
+    const { lines, selectedLine } = gEditor
+    lines[selectedLine - 1].properties.color = newColor
+    renderCanvas()
+}
+
+function changeTextFont(newFont) {
+    const { lines, selectedLine } = gEditor
+    lines[selectedLine - 1].properties.font = newFont
+    renderCanvas()
+}
+
+function resetEditor() {
+    gEditor = {
+        lines: [
+            {
+                lineNumber: 1,
+                text: 'Enter some text',
+                textPos: [350, 100],
+                properties: {
+                    baseline: 'alphabetic',
+                    font: 'Arial',
+                    fontSize: 40,
+                    bold: false,
+                    align: 'center',
+                    color: 'white',
+                },
+            },
+        ],
+        img: '',
+        selectedLine: 1,
+    }
+
+    console.log('reseting editor')
 }

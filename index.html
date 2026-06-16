@@ -77,21 +77,20 @@
             <div class="meme-editor-page hidden">
                 <div class="meme-editor-container">
                     <section class="meme-preview">
-                        <canvas width="500px" height="500px" onclick="onCanvasClick(event)"> </canvas>
-                        <h1 class="test-text">Hi</h1>
+                        <canvas width="500px" height="500px"> </canvas>
                     </section>
                     <section class="meme-controls">
                         <div class="text-inputs">
-                            <input type="text" class="text-input" />
+                            <input type="text" class="text-input" autocomplete="off" />
                             <button class="add-text-button">Add More Text...</button>
                         </div>
 
                         <div class="text-properties-editor">
                             <button class="increase-font-size-button">
-                                <i class="fa-solid fa-a"></i>
+                                <h3>A+</h3>
                             </button>
                             <button class="decrease-font-size-button">
-                                <i class="fa-solid fa-a"></i>
+                                <h3>A-</h3>
                             </button>
                             <button class="align-text-left-button">
                                 <i class="fa-solid fa-align-left"></i>
@@ -106,11 +105,12 @@
                                 <i class="fa-solid fa-up-down"></i>
                             </button>
                             <label for="text-font-select">Select Font</label>
-                            <select name="text-font-select" id="">
+                            <select name="text-font-select" class="text-font-select">
                                 <option value="Arial">Arial</option>
                                 <option value="Impact">Impact</option>
                                 <option value="Monospace">Monospace</option>
                             </select>
+                            <input type="color" name="text-color" class="text-color-picker" />
                         </div>
 
                         <div class="stikers"></div>

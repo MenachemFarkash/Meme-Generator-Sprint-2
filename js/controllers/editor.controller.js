@@ -1,8 +1,49 @@
 const gCanvas = document.querySelector('canvas')
 const gCtx = gCanvas.getContext('2d')
-let gSelectedLine = 1
+let gIsDragging = false
+const gDragStartingPos = [0, 0]
+const gDragEndingPos = [0, 0]
+const gDragOffset = [0, 0]
 
-function setupInitialText() {
+const textInput = document.querySelector('.text-input')
+setupEditorListeners()
+
+function renderCanvas() {
+    renderSelectedMemeToCanvas(gEditor.img)
+    renderText()
+}
+
+function setupEditorListeners() {
+    gCanvas.addEventListener('click', () => onCanvasClick(event))
+    gCanvas.addEventListener('mousedown', () => drawTextBoundingBox(gCtx, onCanvasClick(event)))
+
+    const addTextButton = document.querySelector('.add-text-button')
+    addTextButton.addEventListener('click', onAddNewText)
+
+    textInput.addEventListener('input', (ev) => onChangeText(ev.target.value))
+
+    const alignRightButton = document.querySelector('.align-text-right-button')
+    const alignCenterButton = document.querySelector('.align-text-center-button')
+    const alignLeftButton = document.querySelector('.align-text-left-button')
+
+    alignRightButton.addEventListener('click', () => onChangeTextAlignment('left'))
+    alignCenterButton.addEventListener('click', () => onChangeTextAlignment('center'))
+    alignLeftButton.addEventListener('click', () => onChangeTextAlignment('right'))
+
+    const increaseFontSizeButton = document.querySelector('.increase-font-size-button')
+    const decreaseFontSizeButton = document.querySelector('.decrease-font-size-button')
+
+    increaseFontSizeButton.addEventListener('click', () => onChangeTextFontSize(true))
+    decreaseFontSizeButton.addEventListener('click', () => onChangeTextFontSize(false))
+
+    const colorPicker = document.querySelector('.text-color-picker')
+    colorPicker.addEventListener('input', () => onChangeTextColor(colorPicker.value))
+
+    const fontPicker = document.querySelector('.text-font-select')
+    fontPicker.addEventListener('change', () => changeTextFont(fontPicker.value))
+}
+
+function renderText() {
     const { lines } = gEditor
 
     lines.forEach((line) => {
@@ -13,7 +54,7 @@ function setupInitialText() {
     })
 }
 
-gCanvas.addEventListener('click', (ev) => {
+function onCanvasClick(ev) {
     const rect = gCanvas.getBoundingClientRect()
 
     const x = ev.clientX - rect.left
@@ -22,16 +63,90 @@ gCanvas.addEventListener('click', (ev) => {
     const clickedLine = checkIfTextClicked(x, y, gCtx)
 
     if (clickedLine) {
-        console.log('Clicked:', clickedLine.text)
+        changeSelectedLine(clickedLine.lineNumber)
+        textInput.value = clickedLine.text
+        if (ev.type === 'mousedown') {
+            gIsDragging = true
+            gDragStartingPos[0] = ev.clientX
+            gDragStartingPos[1] = ev.clientY
+            return getSelectedLine()
+        }
     }
-})
 
-const textInput = document.querySelector('.text-input')
-textInput.addEventListener('input', (ev) => onChangeText(1, ev.target.value))
+    if (gIsDragging) {
+        gDragEndingPos[0] = ev.clientX
+        gDragEndingPos[1] = ev.clientY
+        calculateDragOffset()
+        changeTextPos(gDragOffset)
+        gIsDragging = false
+    }
+    renderCanvas()
+}
 
-function onUpdateTextPos(textId) {}
+function calculateDragOffset() {
+    gDragOffset[0] = gDragStartingPos[0] - gDragEndingPos[0]
+    gDragOffset[1] = gDragStartingPos[1] - gDragEndingPos[1]
+    return gDragOffset
+}
 
-function onChangeText(textId, newText) {
-    const selectedLine = gEditor.lines.find((line) => line.lineNumber === textId)
-    console.log(selectedLine)
+function drawTextBoundingBox(ctx, line) {
+    if (!line) return
+    const box = getTextBoundingBox(ctx, line)
+
+    ctx.save()
+
+    ctx.strokeStyle = 'blue'
+    ctx.lineWidth = 1
+
+    ctx.strokeRect(box.x, box.y, box.width, box.height)
+
+    ctx.restore()
+}
+
+function onChangeText(newText) {
+    const { lines, img, selectedLine } = gEditor
+    const lineToEdit = lines.find((line) => line.lineNumber === selectedLine)
+    lineToEdit.text = newText
+    renderSelectedMemeToCanvas(img)
+    renderText()
+}
+
+function onChangeTextAlignment(newAlignment) {
+    changeTextAlignment(newAlignment)
+}
+
+function onChangeTextFontSize(shouldIncrease) {
+    changeTextFontSize(shouldIncrease)
+}
+
+function renderSelectedMemeToCanvas(img) {
+    onChangePage('meme-editor-page')
+    const canvas = document.querySelector('canvas')
+    const ctx = canvas.getContext('2d')
+
+    const image = new Image()
+
+    image.onload = function () {
+        canvas.width = image.naturalWidth
+        canvas.height = image.naturalHeight
+        ctx.drawImage(image, 0, 0)
+
+        gEditor.img = img
+
+        renderText()
+    }
+
+    image.src = img
+}
+
+function onAddNewText() {
+    addNewTextLine()
+}
+
+function onChangeTextColor(newColor) {
+    changeTextColor(newColor)
+}
+
+function onChangeTextFont(newFont) {
+    changeTextFont(newFont)
 }

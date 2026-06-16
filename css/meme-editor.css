@@ -50,3 +50,8 @@ canvas {
     top: 0;
     color: white;
 }
+
+.increase-font-size-button h3,
+.decrease-font-size-button h3 {
+    margin: 0;
+}
