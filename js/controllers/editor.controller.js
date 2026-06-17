@@ -1,11 +1,11 @@
-const gCanvas = document.querySelector('canvas')
-const gCtx = gCanvas.getContext('2d')
+const gCanvas = document.querySelector("canvas")
+const gCtx = gCanvas.getContext("2d")
 let gIsDragging = false
 const gDragStartingPos = [0, 0]
 const gDragEndingPos = [0, 0]
 const gDragOffset = [0, 0]
 
-const textInput = document.querySelector('.text-input')
+const textInput = document.querySelector(".text-input")
 setupEditorListeners()
 
 function renderCanvas() {
@@ -14,43 +14,43 @@ function renderCanvas() {
 }
 
 function setupEditorListeners() {
-    gCanvas.addEventListener('click', () => onCanvasClick(event))
-    gCanvas.addEventListener('mousedown', () => drawTextBoundingBox(gCtx, onCanvasClick(event)))
+    gCanvas.addEventListener("click", () => onCanvasClick(event))
+    gCanvas.addEventListener("mousedown", () => drawTextBoundingBox(gCtx, onCanvasClick(event)))
 
-    const addTextButton = document.querySelector('.add-text-button')
-    addTextButton.addEventListener('click', onAddNewText)
+    const addTextButton = document.querySelector(".add-text-button")
+    addTextButton.addEventListener("click", onAddNewText)
 
-    textInput.addEventListener('input', (ev) => onChangeText(ev.target.value))
+    textInput.addEventListener("input", (ev) => onChangeText(ev.target.value))
 
-    const alignRightButton = document.querySelector('.align-text-right-button')
-    const alignCenterButton = document.querySelector('.align-text-center-button')
-    const alignLeftButton = document.querySelector('.align-text-left-button')
+    const alignRightButton = document.querySelector(".align-text-right-button")
+    const alignCenterButton = document.querySelector(".align-text-center-button")
+    const alignLeftButton = document.querySelector(".align-text-left-button")
 
-    alignRightButton.addEventListener('click', () => onChangeTextAlignment('left'))
-    alignCenterButton.addEventListener('click', () => onChangeTextAlignment('center'))
-    alignLeftButton.addEventListener('click', () => onChangeTextAlignment('right'))
+    alignRightButton.addEventListener("click", () => onChangeTextAlignment("left"))
+    alignCenterButton.addEventListener("click", () => onChangeTextAlignment("center"))
+    alignLeftButton.addEventListener("click", () => onChangeTextAlignment("right"))
 
-    const increaseFontSizeButton = document.querySelector('.increase-font-size-button')
-    const decreaseFontSizeButton = document.querySelector('.decrease-font-size-button')
+    const increaseFontSizeButton = document.querySelector(".increase-font-size-button")
+    const decreaseFontSizeButton = document.querySelector(".decrease-font-size-button")
 
-    increaseFontSizeButton.addEventListener('click', () => onChangeTextFontSize(true))
-    decreaseFontSizeButton.addEventListener('click', () => onChangeTextFontSize(false))
+    increaseFontSizeButton.addEventListener("click", () => onChangeTextFontSize(true))
+    decreaseFontSizeButton.addEventListener("click", () => onChangeTextFontSize(false))
 
-    const colorPicker = document.querySelector('.text-color-picker')
-    colorPicker.addEventListener('input', () => onChangeTextColor(colorPicker.value))
+    const colorPicker = document.querySelector(".text-color-picker")
+    colorPicker.addEventListener("input", () => onChangeTextColor(colorPicker.value))
 
-    const fontPicker = document.querySelector('.text-font-select')
-    fontPicker.addEventListener('change', () => changeTextFont(fontPicker.value))
+    const fontPicker = document.querySelector(".text-font-select")
+    fontPicker.addEventListener("change", () => changeTextFont(fontPicker.value))
 
-    const downloadButton = document.querySelector('.download-button a')
-    downloadButton.addEventListener('click', () => onDownloadImage(downloadButton, gCanvas, Event))
+    const downloadButton = document.querySelector(".download-button a")
+    downloadButton.addEventListener("click", () => onDownloadImage(downloadButton, gCanvas, Event))
 }
 
 function renderText() {
     const { lines } = gEditor
 
     lines.forEach((line) => {
-        gCtx.font = `${line.properties.bold ? 'bold' : ''} ${line.properties.fontSize}px ${line.properties.font}`
+        gCtx.font = `${line.properties.bold ? "bold" : ""} ${line.properties.fontSize}px ${line.properties.font}`
         gCtx.fillStyle = line.properties.color
         gCtx.lineWidth = 5
         gCtx.textAlign = line.properties.align
@@ -70,7 +70,7 @@ function onCanvasClick(ev) {
     if (clickedLine) {
         changeSelectedLine(clickedLine.lineNumber)
         textInput.value = clickedLine.text
-        if (ev.type === 'mousedown') {
+        if (ev.type === "mousedown") {
             gIsDragging = true
             gDragStartingPos[0] = ev.clientX
             gDragStartingPos[1] = ev.clientY
@@ -100,7 +100,7 @@ function drawTextBoundingBox(ctx, line) {
 
     ctx.save()
 
-    ctx.strokeStyle = 'blue'
+    ctx.strokeStyle = "blue"
     ctx.lineWidth = 1
 
     ctx.strokeRect(box.x, box.y, box.width, box.height)
@@ -125,15 +125,16 @@ function onChangeTextFontSize(shouldIncrease) {
 }
 
 function renderSelectedMemeToCanvas(img) {
-    onChangePage('meme-editor-page')
-    const canvas = document.querySelector('canvas')
-    const ctx = canvas.getContext('2d')
+    onChangePage("meme-editor-page")
+    const canvas = document.querySelector("canvas")
+    const ctx = canvas.getContext("2d")
 
     const image = new Image()
 
     image.onload = function () {
         canvas.width = image.naturalWidth
         canvas.height = image.naturalHeight
+
         ctx.drawImage(image, 0, 0)
 
         gEditor.img = img

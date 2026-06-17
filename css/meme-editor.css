@@ -1,27 +1,44 @@
 .meme-editor-page {
-    margin: 3rem;
+    margin: 1rem;
     padding: 1rem;
+    border: 1px solid red;
 }
 
 .meme-editor-container {
     display: flex;
-    gap: 5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    min-height: 80dvh;
 }
 
 .meme-controls {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 3rem 2rem;
+    padding: clamp(0.5rem, 2vw, 3rem);
     background-color: #383b42;
     border-radius: 3rem;
+    width: auto;
 }
 
-.meme-controls input[type='text'] {
+canvas {
+    width: 100%;
+    background-color: white;
+    border-radius: 3rem;
+    border: 0.5rem solid #363942;
+}
+
+.meme-preview {
+    position: relative;
+    min-width: fit-content;
+}
+
+.meme-controls input[type="text"] {
     width: 100%;
     margin-block-end: 1rem;
     height: 4rem;
-    font-size: 3rem;
+    font-size: clamp(1rem, 3vw, 2rem);
     text-align: center;
     border-radius: 3rem;
     border: 1px solid #bfc3c8;
@@ -39,10 +56,10 @@
 }
 
 .action-buttons-container button {
-    width: 54px;
-    height: 54px;
+    width: clamp(25px, 45%, 54px);
+    height: 100%;
     border-radius: 7px;
-    font-size: 2rem;
+    font-size: clamp(1rem, 4vw, 2rem);
     color: white;
     cursor: pointer;
 }
@@ -84,10 +101,11 @@
 }
 
 .text-properties-editor button {
-    width: 54px;
-    height: 54px;
-    font-size: 2rem;
-    border: none;
+    width: clamp(min-content, 25%, max-content);
+    height: clamp(min-content, 25%, max-content);
+    padding: 0.5rem;
+    font-size: clamp(1rem, 2vw, 2rem);
+    border: 1px solid red;
     border-radius: 7px;
     box-shadow: 0 4px 0 #9ca3af;
     background-color: white;
@@ -95,10 +113,11 @@
 
 .text-properties-editor select {
     flex-grow: 2;
-    width: auto;
+    width: clamp(120px, 25vw, 140px);
+    height: clamp(40px, 25vw, 60px);
+    max-width: 100%;
     margin-block-end: 1rem;
-    height: 54px;
-    font-size: 3rem;
+    font-size: clamp(1rem, 3vw, 2rem);
     text-align: center;
     border-radius: 1rem;
     border: 1px solid #bfc3c8;
@@ -108,19 +127,9 @@
     background-color: #ebeef3;
 }
 
-.text-properties-editor input[type='color'] {
+.text-properties-editor input[type="color"] {
     width: 54px;
     height: 54px;
-}
-
-canvas {
-    background-color: white;
-    border-radius: 3rem;
-    border: 0.5rem solid #363942;
-}
-
-.meme-preview {
-    position: relative;
 }
 
 .increase-font-size-button h3,
