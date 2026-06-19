@@ -62,10 +62,10 @@ function getTextBoundingBox(ctx, line) {
     }
 
     const pos = {
-        x,
-        y: top,
-        width,
-        height,
+        x: x - 10,
+        y: top - 10,
+        width: width + 25,
+        height: height + 25,
     }
 
     return pos
@@ -160,6 +160,4 @@ function resetEditor() {
         img: '',
         selectedLine: 1,
     }
-
-    console.log('reseting editor')
 }

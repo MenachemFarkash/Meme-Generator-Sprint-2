@@ -17,9 +17,6 @@ function setupEditorListeners() {
     gCanvas.addEventListener('pointerup', () => onCanvasClick(event))
     gCanvas.addEventListener('pointerdown', () => drawTextBoundingBox(gCtx, onCanvasClick(event)))
 
-    // gCanvas.addEventListener('pointermove', () => console.log('pointermove'))
-    // gCanvas.addEventListener('pointerup', () => console.log('pointerup'))
-
     const addTextButton = document.querySelector('.add-text-button')
     addTextButton.addEventListener('click', onAddNewText)
 
@@ -63,7 +60,6 @@ function renderText() {
 }
 
 function onCanvasClick(ev) {
-    console.log(ev.type)
     const rect = gCanvas.getBoundingClientRect()
 
     const scaleX = gCanvas.width / rect.width
