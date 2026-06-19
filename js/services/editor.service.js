@@ -21,7 +21,6 @@ let gEditor = {
 function checkIfTextClicked(x, y, ctx) {
     return gEditor.lines.find((line) => {
         const box = getTextBoundingBox(ctx, line)
-
         return x >= box.x && x <= box.x + box.width && y >= box.y && y <= box.y + box.height
     })
 }
